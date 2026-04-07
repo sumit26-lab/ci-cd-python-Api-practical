@@ -8,7 +8,6 @@ def test_home():
     assert "Hello DevOps" in response.data
 
 
-
 def test_health():
     client = app.test_client()
     response = client.get("/health")
