@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    # If API client (like pytest) → return JSON
+    # Return JSON for API/testing
     if request.headers.get("Accept") == "application/json":
         return jsonify(message="Hello DevOps Engg")
 
-    # Otherwise → return HTML
+    # Return HTML for browser
     return send_file("../index.html")
 
 
