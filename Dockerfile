@@ -3,9 +3,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt gunicorn
 
 COPY . .
 
-CMD ["python", "app/app.py"]
-
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app.app:app"]
