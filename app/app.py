@@ -1,12 +1,16 @@
-from flask import Flask, jsonify, send_file
-
+from flask import Flask, jsonify, send_file, request
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return send_file("../index.html")   # simple direct file serve
+    # If API client (like pytest) → return JSON
+    if request.headers.get("Accept") == "application/json":
+        return jsonify(message="Hello DevOps Engg")
+
+    # Otherwise → return HTML
+    return send_file("../index.html")
 
 
 @app.route("/health")
