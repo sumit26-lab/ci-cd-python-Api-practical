@@ -60,7 +60,7 @@ jobs:
       - name: Set Image Tag
         id: vars
         run: |
-          if[[ "${GITHUB_REF}" == "ref/head/dev" ]]; then
+          if [[ "${GITHUB_REF}" == "ref/head/dev" ]]; then
             echo "tag=dev-${GITHUB_SHA}" >> $GITHUB_OUTPUT
           else 
             echo "tag=prod-${GITHUB_SHA}" >> $GITHUB_OUTPUT 
